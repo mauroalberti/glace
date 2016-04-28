@@ -2,13 +2,10 @@
 Tools for processing and analysis of ICESat data
 
 ReadGLA12: reads a set of input GLA12 files.
-
-The Fortran 90/95 algorithm reads data from a set of binary ICESat files, filters them according to user defined geographic, temporal and quality settings and writes the resulting records into ascii files (for GIS import as point layers) and binary files (for analysis with the algorithm for the detection of height differences between neighbouring elevations).	The original version of the algorithm is described in Alberti & Biscaro (2010).
-
 Language: Fortran 90/95
-Compiler: g95 - Windows
-Version: 2010-06-26
-Code: readgla12.zip
+
+The Fortran 90/95 algorithm reads data from a set of binary ICESat files, filters them according to user defined geographic, temporal and quality settings and writes the resulting records into ascii files (for GIS import as point layers) and binary files (for analysis with the algorithm for the detection of height differences between neighbouring elevations).	
+The original version of the algorithm is described in Alberti & Biscaro (2010).
 
 Since data in GLA12 files are in big-endian notation (the Unix default), when working in Windows you must compile the program using the big-endian data option. 
 For instance, with the free g95 compiler, the command line should include the "-fendian=BIG" option, e.g.: 
@@ -48,5 +45,9 @@ References
 Alberti, M., Biscaro, D., 2010. Height variation detection in polar regions from ICESat satellite altimetry. Computers & Geosciences 36, 1-9.
 
 
+Web
 
+<a href="http://nsidc.org/data/docs/daac/glas_altimetry/gla12_records_r34.html">GLA 12 Records: Release 34</a>
+
+<a href="http://malg.eu/icesatimport.php">ICESat data import</a>
 

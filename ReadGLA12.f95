@@ -47,7 +47,7 @@ use kinds_mod
 
 type :: date
 sequence
-	integer (kind=i2b) :: year,month,day,hour,minutes
+    integer (kind=i2b) :: year, month, day, hour, minutes
     real (kind=r4b) :: seconds 
 end type date
 
@@ -158,9 +158,12 @@ case(220881600:252417599)
 case(252417600:284039999)
 	time_date%year = 2008
     residual_sec = J2000time_sec - 252417600.0
-case(284040000:)
+case(284040000:315575999)
 	time_date%year = 2009
-    residual_sec = J2000time_sec - 284040000.0   
+    residual_sec = J2000time_sec - 284040000.0  
+case(315576000:)
+	time_date%year = 2010
+    residual_sec = J2000time_sec - 315576000.0  
 end select 
 
 ! set february days number for leap years
@@ -216,96 +219,109 @@ use time_processing
 type     :: GLA12_prod_input
   sequence
   integer (kind=i4b) :: i_rec_ndx                 
-  integer (kind=i4b) :: i_UTCTime       (2)       
+  integer (kind=i4b) :: i_UTCTime           (2)       
   integer (kind=i2b) :: i_transtime               
-  integer (kind=i2b) :: i_spare1                  
+  integer (kind=i1b) :: i_Spare1            (2)                  
   integer (kind=i4b) :: i_deltagpstmcor           
-  integer (kind=i4b) :: i_dShotTime     (39)      
-  integer (kind=i4b) :: i_lat           (40)      
-  integer (kind=i4b) :: i_lon           (40)      
-  integer (kind=i4b) :: i_elev          (40)      
-  integer (kind=i4b) :: i_PADPoint      (6,40)    
-  integer (kind=i4b) :: i_PODFixedPos   (6,40)    
-  integer (kind=i2b) :: i_sigmaatt      (40)      
+  integer (kind=i4b) :: i_dShotTime         (39)      
+  integer (kind=i4b) :: i_lat               (40)      
+  integer (kind=i4b) :: i_lon               (40)      
+  integer (kind=i4b) :: i_elev              (40) 
+  integer (kind=i1b) :: i_campaign          (2)  
+  integer (kind=i2b) :: i_spare40  
+  integer (kind=i4b) :: i_cycTrk
+  integer (kind=i4b) :: i_localSolarTime 
+  integer (kind=i4b) :: i_spare41           (7) 
+  integer (kind=i2b) :: i_deltaEllip        (40)   
+  integer (kind=i4b) :: i_beamCoelv         (40)
+  integer (kind=i4b) :: i_beamAzimuth       (40)
+  integer (kind=i4b) :: i_d2refTrk          (40)
+  integer (kind=i4b) :: i_SigBegOff         (40)
+  integer (kind=i1b) :: i_DEM_hires_src     (40)
+  integer (kind=i2b) :: i_DEMhiresArElv     (9,40)
+  integer (kind=i2b) :: i_ElevBiasCorr      (40) 
+  integer (kind=i2b) :: i_GmC               (40)  
+  integer (kind=i2b) :: i_spare42           (3.40) 
+  integer (kind=i2b) :: i_sigmaatt          (40)      
   integer (kind=i4b) :: i_Azimuth                 
   integer (kind=i4b) :: i_SolAng                  
   integer (kind=i4b) :: i_tpintensity_avg         
   integer (kind=i2b) :: i_tpazimuth_avg           
   integer (kind=i2b) :: i_tpeccentricity_avg      
-  integer (kind=i2b) :: i_tpmajoraxis_avg         
-  integer (kind=i2b) :: i_spare2                  
-  integer (kind=i2b) :: i_gdHt          (2)       
-  integer (kind=i2b) :: i_erElv         (2)       
-  integer (kind=i2b) :: i_spElv         (4)       
-  integer (kind=i2b) :: i_ldElv         (4)       
-  integer (kind=i2b) :: i_ocElv         (2)       
-  integer (kind=i2b) :: i_wTrop         (2)       
-  integer (kind=i2b) :: i_dTrop         (40)      
+  integer (kind=i2b) :: i_tpmajoraxis_avg 
+  integer (kind=i1b) :: i_poleTide          (2)                 
+  integer (kind=i2b) :: i_gdHt              (2)       
+  integer (kind=i2b) :: i_erElv             (2)       
+  integer (kind=i2b) :: i_spElv             (4)       
+  integer (kind=i2b) :: i_ldElv             (4) 
+  integer (kind=i2b) :: i_spare12           (2)      
+  integer (kind=i2b) :: i_wTrop             (2)       
+  integer (kind=i2b) :: i_dTrop             (40)      
   integer (kind=i1b) :: i_surfType                
-  integer (kind=i1b) :: i_spare3        (3)       
-  integer (kind=i4b) :: i_DEM_elv       (40)      
-  integer (kind=i4b) :: i_refRng        (40)      
-  integer (kind=i4b) :: i_TrshRngOff    (40)      
-  integer (kind=i4b) :: i_isRngOff      (40)      
-  integer (kind=i4b) :: i_SigEndOff     (40)      
-  integer (kind=i4b) :: i_cntRngOff     (40)      
-  integer (kind=i4b) :: i_reflctUncorr  (40)      
+  integer (kind=i1b) :: i_spare11           (3)       
+  integer (kind=i4b) :: i_DEM_elv           (40)      
+  integer (kind=i4b) :: i_refRng            (40)      
+  integer (kind=i4b) :: i_TrshRngOff        (40)      
+  integer (kind=i4b) :: i_isRngOff          (40)      
+  integer (kind=i4b) :: i_SigEndOff         (40)      
+  integer (kind=i4b) :: i_cntRngOff         (40)      
+  integer (kind=i4b) :: i_reflctUC          (40)      
   integer (kind=i4b) :: i_reflCor_atm             
-  integer (kind=i2b) :: i_maxSmAmp      (40)      
-  integer (kind=i2b) :: i_SigmaElv      (40)      
-  integer (kind=i1b) :: i_numPk         (40)      
-  integer (kind=i2b) :: i_kurt2         (40)      
-  integer (kind=i2b) :: i_skew2         (40)      
-  integer (kind=i2b) :: i_IceSheetRuf   (40)      
-  integer (kind=i2b) :: i_IsSlopeEmp    (40)      
-  integer (kind=i4b) :: i_IsRngLast     (40)      
-  integer (kind=i4b) :: i_IsRngFst      (40)      
-  integer (kind=i2b) :: i_IceSVar       (40)      
-  integer (kind=i1b) :: i_ElvuseFlg     (5)       
+  integer (kind=i2b) :: i_maxSmAmp          (40)  
+  integer (kind=i2b) :: i_ocElv             (40)     
+  integer (kind=i1b) :: i_numPk             (40)      
+  integer (kind=i2b) :: i_kurt2             (40)      
+  integer (kind=i2b) :: i_skew2             (40) 
+  integer (kind=i1b) :: i_spare4            (160) 
+  integer (kind=i4b) :: i_IsRngLast         (40)      
+  integer (kind=i4b) :: i_IsRngFst          (40)      
+  integer (kind=i2b) :: i_IceSVar           (40)      
+  integer (kind=i1b) :: i_ElvuseFlg         (5)       
   integer (kind=i1b) :: i_atm_avail
-  integer (kind=i2b) :: i_erd
-  integer (kind=i2b) :: i_rdu
+  integer (kind=i1b) :: i_spare16           (4)  
   integer (kind=i1b) :: i_cld1_mswf
-  integer (kind=i1b) :: i_MRC_af   
-  integer (kind=i1b) :: i_SurfRuf_slpQF (40)      
-  integer (kind=i1b) :: i_elvflg        (40)      
-  integer (kind=i2b) :: i_rng_UQF       (40)      
-  integer (kind=i1b) :: i_atmQF         (10)      
+  integer (kind=i1b) :: i_MRC_af  
+  integer (kind=i1b) :: i_spare9            (40) 
+  integer (kind=i1b) :: i_ElvFlg            (40) 
+  integer (kind=i2b) :: i_rng_UQF           (40) 
+  integer (kind=i1b) :: i_spare49           (10) 
   integer (kind=i2b) :: i_timecorflg              
-  integer (kind=i1b) :: i_APID_AvFlg    (8)       
-  integer (kind=i1b) :: i_AttFlg2       (20)      
+  integer (kind=i1b) :: i_APID_AvFlg        (8)       
+  integer (kind=i1b) :: i_AttFlg2           (20)      
   integer (kind=i1b) :: i_spare5                  
   integer (kind=i1b) :: i_FrameQF                 
-  integer (kind=i1b) :: i_OrbFlg        (2)       
-  integer (kind=i1b) :: i_rngCorrFlg    (2)       
-  integer (kind=i1b) :: i_CorrStatFlg   (2)       
-  integer (kind=i4b) :: i_beam_coelev             
-  integer (kind=i4b) :: i_beam_azimuth            
+  integer (kind=i1b) :: i_OrbFlg            (2)       
+  integer (kind=i1b) :: i_rngCorrFlg        (2)       
+  integer (kind=i1b) :: i_CorrStatFlg       (2)  
+  integer (kind=i1b) :: i_spare15           (8)            
   integer (kind=i2b) :: i_AttFlg1                 
-  integer (kind=i1b) :: i_spare6        (2)     
-  integer (kind=i1b) :: i_DEM_hires_src (40)
-  integer (kind=i2b) :: i_DEM_hires_elv (40)
-  integer (kind=i1b) :: i_satNdx(40)
-  integer (kind=i2b) :: i_satElevCorr(40)
-  integer (kind=i1b) :: i_satCorrFlg(40)
-  integer (kind=i2b) :: i_satNrgCorr(40)
-  integer (kind=i2b) :: i_satPwdCorr(40)
-  integer (kind=i2b) :: i_gval_rcv(40)
-  integer (kind=i2b) :: i_RecNrgAll(40)
-  integer (kind=i2b) :: i_FRir_cldtop(40)
-  integer (kind=i1b) :: i_FRir_qaFlag(40)
-  integer (kind=i1b) :: i_FRir_ODflg(40)
-  integer (kind=i2b) :: i_FRir_intsig(40)
-  integer (kind=i2b) :: i_msRngCorr (40)
-  integer (kind=i1b) :: i_msCorrFlg (40)
+  integer (kind=i1b) :: i_Spare6            (2)  
+  integer (kind=i1b) :: i_spare44           (120) 
+  integer (kind=i1b) :: i_satNdx            (40)
+  integer (kind=i2b) :: i_satElevCorr       (40)
+  integer (kind=i1b) :: i_satCorrFlg        (40)
+  integer (kind=i2b) :: i_satNrgCorr        (40)
+  integer (kind=i2b) :: i_spare13           (40) 
+  integer (kind=i2b) :: i_gval_rcv          (40)
+  integer (kind=i2b) :: i_RecNrgAll         (40)
+  integer (kind=i2b) :: i_FRir_cldtop       (40)
+  integer (kind=i1b) :: i_FRir_qaFlag       (40)
+  integer (kind=i2b) :: i_atm_char_flag 
+  integer (kind=i2b) :: i_atm_char_conf  
+  integer (kind=i1b) :: i_spare48           (36) 
+  integer (kind=i2b) :: i_FRir_intsig       (40)
+  integer (kind=i1b) :: i_spare14           (120) 
   integer (kind=i2b) :: i_Surface_temp
   integer (kind=i2b) :: i_Surface_pres
   integer (kind=i2b) :: i_Surface_relh
-  integer (kind=i2b) :: i_maxRecAmp     (40)
-  integer (kind=i2b) :: i_sDevNsOb1     (40)
-  integer (kind=i1b) :: i_pctSAT(40)
-  integer (kind=i1b) :: i_spare7        (366) 
+  integer (kind=i2b) :: i_maxRecAmp         (40)
+  integer (kind=i2b) :: i_sDevNsOb1         (40)
+  integer (kind=i1b) :: i_pctSAT            (40)
+  integer (kind=i2b) :: i_TxNrg             (40) 
+  integer (kind=i2b) :: i_eqElv             (2)    
+  integer (kind=i1b) :: i_spare7            (282) 
   
+
 end type GLA12_prod_input
 
 
@@ -323,10 +339,10 @@ type     :: GLA12_prod_output
   sequence
 
   integer (kind=i4b) :: id_shot				! id of shot
-  character (len=45) :: GLA12sourcefile     ! GLA12 file name
+  character (len=45) :: GLA12sourcefile     		! GLA12 file name
   integer (kind=i4b) :: id_track  			! id of track	 	
   integer (kind=i4b) :: rec_ndx				! GLA12 record index
-  real    (kind=r8b) :: UTCTime_julsec		! shot time in Julian seconds
+  real    (kind=r8b) :: UTCTime_julsec			! shot time in Julian seconds
   type    (date)     :: time_shot			! shot time in year-month-day-hr-min-sec
   type    (pole)     :: shot_loc			! location (latitude-longitude)
   integer (kind=i1b) :: ElvuseFlg			! elevation use flag (0: valid elevation; 1: invalid e.)
