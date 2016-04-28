@@ -25,19 +25,27 @@ GLA12_05052016_r2973_428_L3C.P1387_01_00
 
 the latter with the analysis parameters, e.g.: 
 
--90 90 
+-90 90
+ 
 -180 180 
+
 2005 1 1 2009 1 1 
+
 300 100 
 
 where: 
 
 -90 90 #minimum and maxixum latitude 
+
 -180 180 #minimum and maxixum longitude 
+
 2005 1 1 2009 1 1 #time window: initial and final year month day; if not required: -1 as first value 
+
 300 100 #filters on saturation elevation correction and gain value; when not desired substitute value with -1 (e.g. 300 -1 or -1 100 or -1 -1 ) 
 
+
 A set of ascii files for GIS import, each one corresponding to an input Glas binary file, and a binary file for height variation analysis with the HeightVarGLA_v1.0 program. You can find further methodology details in Alberti & Biscaro (2010).
+
 
 
 References
