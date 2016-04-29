@@ -241,7 +241,7 @@ type     :: GLA12_prod_input
   integer (kind=i2b) :: i_DEMhiresArElv     (9,40)
   integer (kind=i2b) :: i_ElevBiasCorr      (40) 
   integer (kind=i2b) :: i_GmC               (40)  
-  integer (kind=i2b) :: i_spare42           (3.40) 
+  integer (kind=i2b) :: i_spare42           (3, 40) 
   integer (kind=i2b) :: i_sigmaatt          (40)      
   integer (kind=i4b) :: i_Azimuth                 
   integer (kind=i4b) :: i_SolAng                  
@@ -707,10 +707,8 @@ type(analysis_param)  :: params
 
 type(analysis_param) :: FilteringParameters 
 
-character (len=50) :: firstline, secondline, record_length_ch, num_headrecs_ch 
 					
-integer (kind=i2b) :: ios_inpt, record_length, num_headrecs  &
-						, n, ndx_ln_eqchar, ndx_ln_delimchar
+integer (kind=i2b) :: ios_inpt, n
 
 integer (kind=i4b) :: m
 
