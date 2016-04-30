@@ -9,7 +9,7 @@ Language: Fortran 90/95
 
 <h2>ReadGLA12</h2>
 
-This Fortran console program reads data from a set of binary ICESat files, filters them according to user defined geographic, temporal and quality settings and writes the resulting records into both ascii files, for GIS import as point layers, and also a binary file, to be used with the "HeightVarGLA" program for the detection of height differences between neighbouring elevations) (available at >a href="http://www.malg.eu/heightvar.php">http://www.malg.eu/heightvar.php</a>).
+This Fortran console program reads data from a set of binary ICESat files, filters them according to user defined geographic, temporal and quality settings and writes the resulting records into both ascii files, for GIS import as point layers, and also a binary file, to be used with the "HeightVarGLA" program for the detection of height differences between neighbouring elevations) (available at <a href="http://www.malg.eu/heightvar.php">http://www.malg.eu/heightvar.php</a>).
 
 The original version of the algorithm is described in Alberti & Biscaro (2010).
 
