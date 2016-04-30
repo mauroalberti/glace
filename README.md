@@ -70,7 +70,7 @@ Alberti, M., Biscaro, D., 2010. Height variation detection in polar regions from
 
 
 
-<h3>Web</h3>
+<h3>Web references</h3>
 
 <i>GLA 12 Records: Release 34</i> at <a href="http://nsidc.org/data/docs/daac/glas_altimetry/gla12_records_r34.html">http://nsidc.org/data/docs/daac/glas_altimetry/gla12_records_r34.html</a>
 
