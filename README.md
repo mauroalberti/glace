@@ -4,7 +4,7 @@ Tools for processing and analysis of ICESat data
 
 <b>ReadGLA12</b>: reads a set of input GLA12 files, stored in rel. 34 format (the current one as of 2016-04-30).
 
-Language: Fortran 90/95
+Language: Fortran 90/95. Compiled exe file for Windows available at <a href="http://www.malg.eu/icesatimport.php">ICESat data import</a>
 
 
 <h2>ReadGLA12</h2>
