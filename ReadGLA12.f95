@@ -2,13 +2,15 @@
 ! for icesat gla12 reading
 !
 ! Mauro Alberti,
-! July-November, 2007
+! July-November, 2007; April 2016
+! 
 
 ! part of code inspired to Fortran programs in NSIDC web site
 
 ! modified:
 ! 2008-09-23: changed InputFile to GLA12FileName, and its width to 45 (string then trimmed);
 ! 2010-06-26: output GIS data to multiple files; read analysis parameters for a text file
+! 2016-04-30: adapted to release 34
 
 !------------------------------------------------    
 
@@ -1065,8 +1067,8 @@ write (*,"(A)") '*****************************************'
 write (*,*)
 write (*,"(16X,A)") 'readGLA12'
 write (*,*)
-write (*,"(16X,A)")	'vers. 5.0 modified'
-write (*,"(17X,A)") '2010-06-26'
+write (*,"(16X,A)")	'vers. 6.0'
+write (*,"(16X,A)") '2016-04-30'
 write (*,*)
 write (*,"(5X,A)") 'program for reading GLA12 files'
 write (*,*) 

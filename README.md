@@ -28,7 +28,9 @@ GLA12_05052016_r2973_428_L3C.P1387_01_00
 ...... 
 </i>
 
-the latter with the analysis parameters, e.g.: 
+
+the latter with the analysis parameters, e.g.:
+
 <i>
 -90 90
  
@@ -37,8 +39,12 @@ the latter with the analysis parameters, e.g.:
 2005 1 1 2009 1 1 
 
 300 100 
+
+
 </i>
 where: 
+
+
 <i>
 -90 90 # minimum and maxixum latitude 
 
@@ -49,12 +55,15 @@ where:
 300 100 # filters on saturation elevation correction and gain value; when not desired substitute value with -1 (e.g. 300 -1 or -1 100 or -1 -1 ) 
 </i>
 
+
 A set of ascii files for GIS import, each one corresponding to an input Glas binary file, and a binary file for height variation analysis with the HeightVarGLA_v1.0 program. You can find further methodology details in Alberti & Biscaro (2010).
+
 
 
 <h3>References</h3>
 
 Alberti, M., Biscaro, D., 2010. Height variation detection in polar regions from ICESat satellite altimetry. Computers & Geosciences 36, 1-9.
+
 
 
 <h3>Web</h3>
