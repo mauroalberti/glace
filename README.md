@@ -59,7 +59,7 @@ where:
 
 <h3>Program output</h3>
 
-The output consists of a set of ascii files for GIS import, each one corresponding to an input Glas binary file, and a binary file for height variation analysis with the HeightVarGLA program (currently available at >a href="http://www.malg.eu/heightvar.php">http://www.malg.eu/heightvar.php</a>). 
+The output consists of a set of ascii files for GIS import, each one corresponding to an input Glas binary file, and a binary file for height variation analysis with the HeightVarGLA program (currently available at <a href="http://www.malg.eu/heightvar.php">http://www.malg.eu/heightvar.php</a>). 
 
 You can find further methodology details in Alberti & Biscaro (2010).
 
