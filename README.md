@@ -38,7 +38,7 @@ The list of GLA12 binary files to read is composed by one record for line, e.g.:
 > GLA12_04051816_r2973_428_L2C.P1387_01_00 
 > GLA12_04100321_r2973_428_L3A.P1387_01_00 
 > GLA12_05021715_r2973_428_L3B.P1387_01_00 
-> GLA12_05052016_r2973_428_L3C.P1387_01_00 
+> GLA12_05052016_r2973_428_L3C.P1387_01_00  
 > ......
 
 
@@ -46,23 +46,17 @@ The list of GLA12 binary files to read is composed by one record for line, e.g.:
 
 An example of parameters is:
 
-> -90 90
-
-> -180 180
-
-> 2005 1 1 2009 1 1
-
-> 300 100
+> -90 90  
+> -180 180  
+> 2005 1 1 2009 1 1  
+> 300 100  
 
 where: 
 
-> -90 90 # minimum and maxixum latitude
-
-> -180 180 # minimum and maxixum longitude
-
-> 2005 1 1 2009 1 1 # time window: initial and final year month day; if not required: -1 as first value
-
-> 300 100 # filters on saturation elevation correction and gain value; when not desired substitute value with -1 (e.g. 300 -1 or -1 100 or -1 -1 ) 
+> -90 90 # minimum and maxixum latitude  
+> -180 180 # minimum and maxixum longitude  
+> 2005 1 1 2009 1 1 # time window: initial and final year month day; if not required: -1 as first value  
+> 300 100 # filters on saturation elevation correction and gain value; when not desired substitute value with -1 (e.g. 300 -1 or -1 100 or -1 -1 )   
 
 
 ### Program output
