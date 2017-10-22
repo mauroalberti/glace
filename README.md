@@ -1,26 +1,27 @@
-# glace
+ # glace
 
-Tools for processing and analysis of ICESat data
+Fortran 95 tools for the processing and analysis of ICESat data
 
-<b>ReadGLA12</b>: reads a set of input GLA12 files, stored in rel. 34 format (the current one as of 2016-04-30).
+*ReadGLA12*: reads a set of input GLA12 files, stored in rel. 34 format (the current one as of 2016-04-30).
 
-Language: Fortran 90/95. 
+*HeightVarGla*: calculates height differences between elevation pairs within a user-defined search radius. 
+
+
+## Compilation
+
+Since data in GLA12 files are in big-endian notation (the Unix default), when working in Windows you must compile the program using the big-endian data option. 
+For instance, with the free g95 compiler, the command line should include the "-fendian=BIG" option, e.g.: 
+
+```
+ > g95 ReadGLA12_v5.0.f95 -fendian=BIG -o readgla12.exe
+ > g95 HeightVarGLA_v1.0.f95 -fendian=BIG -o heightvar.exe
+```
 
 ## ReadGLA12
 
 This Fortran console program reads data from a set of binary ICESat files, filters them according to user defined geographic, temporal and quality settings and writes the resulting records into both ascii files, for GIS import as point layers, and also a binary file, to be used with the "HeightVarGLA" program for the detection of height differences between neighbouring elevations).
 
 The original version of the algorithm is described in Alberti & Biscaro (2010).
-
-
-#### Compilation
-
-Since data in GLA12 files are in big-endian notation (the Unix default), when working in Windows you must compile the program using the big-endian data option. 
-For instance, with the free g95 compiler, the command line should include the "-fendian=BIG" option, e.g.: 
-
-```
-> g95 ReadGLA12_v5.0.f95 -fendian=BIG -o readgla12.exe
-```
 
 ### Program input
 
@@ -64,69 +65,29 @@ where:
 > 300 100 # filters on saturation elevation correction and gain value; when not desired substitute value with -1 (e.g. 300 -1 or -1 100 or -1 -1 ) 
 
 
-<h3>Program output</h3>
+### Program output
 
 The output consists of a set of ascii files for GIS import, each one corresponding to an input Glas binary file, and a binary file for height variation analysis with the HeightVarGLA program. 
 
 You can find further methodology details in Alberti & Biscaro (2010).
 
+# Height variations in nearest measures
 
-          <h2>Height variations in nearest measures</h2>
-          <div class="clr"></div>
+This algorithm calculates height differences between elevation pairs within a user-defined search radius. Suggested values are between 50 and 500-1 000 m, depending on the desired output resolution and on the slope and roughness of the topographic surfaces.
 
-		<article>
+The user can choose to output results only within a predefined range of the elevation differences, e.g., all pairs with height differences between 0.5 m and 5 m. 
 
-			<h3>Aim</h3>
+More details are in Alberti & Biscaro (2010).
+
+### Program input	
 			
-			<p>
-				This algorithm calculates height differences between elevation pairs within a
-				user-defined search radius. Suggested values are between 50 and 500-1 000 m, depending on the desired output 
-				resolution and on the slope and roughness of the topographic surfaces.
-				The user can choose to output results only within a predefined range of the elevation differences, 
-				e.g., all pairs with height differences between 0.5 m and 5 m. 
-				More details are in <a href="paper_CG_2010.php">Alberti & Biscaro (2010)</a>.
-			</p>
+The input for the elaborations consists of one or two binary files (with .dat extension) created by the ReadGLA12 program, storing data for a specific geographic domain acquired in a single time interval (when using one input file) or in two different time intervals (two input files). 
 
-			<h3>Code</h3>
+### Program output	
 
-			<p>					
-				<i>Language</i>: Fortran 90/95<br>
-				<i>Compiler</i>: g95 - Windows<br>
-				<i>Version</i>: 2008-08-12<br>
-				<i>Code</i>: <a href="code/height_var.zip">height_var.zip</a><br> 
+Filtered-in pairs are written in an output text file that can be easily imported into GIS software. A metadata file stores information about the analysis session and analysed tracks (e.g., time, input files, used thresholds on distance and elevation differences, and summary results for each track). 
 
-				<br />
-				
-				Since data in GLA12 files are in big-endian notation (the Unix default), 
-				compile the program in Windows using the big-endian data option. 
-				<br />For example, with the free g95 compiler, the command line should include the "-fendian=BIG" option, e.g.:
-				<br />
-				&nbsp;&nbsp;<i>prompt> g95 HeightVarGLA_v1.0.f95 -fendian=BIG -o heightvar.exe</i>
-			</p>
-			
-			<p>
-
-			</p>
-
-			<h3>Program input</h3>	
-			
-			<p>
-				The input for the elaborations consists of one or two binary files (with .dat extension) created 
-				by the <a href="icesatimport.php">ReadGLA12 program</a>, storing data for a specific geographic domain acquired in a 
-				single time interval (when using one input file) or in two different time intervals (two input files). 
-			</p>							
-
-			<h3>Program output</h3>	
-			
-			<p>
-				Filtered-in pairs are written in an output text 
-				file that can be easily imported into GIS software. A metadata file stores information about the analysis session 
-				and analysed tracks (e.g., time, input files, used thresholds on distance and elevation differences, and summary 
-				results for each track). 
-			</p>
-      
-<h3>References</h3>
-
+### References
 
 Alberti, M., Biscaro, D., 2010. Height variation detection in polar regions from ICESat satellite altimetry. Computers & Geosciences 36, 1-9.
 
