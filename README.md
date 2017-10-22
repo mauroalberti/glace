@@ -1,4 +1,4 @@
- # glace
+# glace
 
 Fortran 95 tools for the processing and analysis of ICESat data
 
@@ -71,7 +71,7 @@ The output consists of a set of ascii files for GIS import, each one correspondi
 
 You can find further methodology details in Alberti & Biscaro (2010).
 
-# Height variations in nearest measures
+## Height variations in nearest measures
 
 This algorithm calculates height differences between elevation pairs within a user-defined search radius. Suggested values are between 50 and 500-1 000 m, depending on the desired output resolution and on the slope and roughness of the topographic surfaces.
 
@@ -87,7 +87,7 @@ The input for the elaborations consists of one or two binary files (with .dat ex
 
 Filtered-in pairs are written in an output text file that can be easily imported into GIS software. A metadata file stores information about the analysis session and analysed tracks (e.g., time, input files, used thresholds on distance and elevation differences, and summary results for each track). 
 
-### References
+## References
 
 Alberti, M., Biscaro, D., 2010. Height variation detection in polar regions from ICESat satellite altimetry. Computers & Geosciences 36, 1-9.
 
