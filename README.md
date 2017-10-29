@@ -2,6 +2,8 @@
 
 Fortran 95 and C++ tools for the processing and analysis of ICESat data, in particular for extracting Antarctic megadunes parameters.
 
+Algorithms created in collaboration with Debbie Biscaro and Maja Radivojevic (Museo Nazionale dell'Antartide, Siena, Italy).
+
 Currently only Fortran algorithms are here described.
 
 
