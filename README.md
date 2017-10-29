@@ -1,6 +1,6 @@
 # glace
 
-Fortran 95 tools for the processing and analysis of ICESat data
+Fortran 95 and C++ tools for the processing and analysis of ICESat data, in particular for extracting megadune parameters.
 
 *ReadGLA12*: reads a set of input GLA12 files, stored in rel. 34 format (the current one as of 2016-04-30).
 
